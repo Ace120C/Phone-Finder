@@ -104,7 +104,7 @@ func main() {
 	}
 
   var selectedBrand, selectedModel string
-  fmt.Print("Enter a brand: ")
+    fmt.Print("Enter a brand: ")
   fmt.Scanln(&selectedBrand)
   selectedBrand = strings.ToUpper(selectedBrand)
 
@@ -113,10 +113,15 @@ func main() {
   selectedModel = strings.ToUpper(selectedModel)
 
   results := getphone_specs(selectedBrand, selectedModel, brands)
+  for {
+  var exit string = "EXIT"
   fmt.Print(results)
-  fmt.Println("Press a Button to exit: ")
-  fmt.Scan()
-
-	}
+  fmt.Printf("\nType EXIT to exit: ")
+  fmt.Scan(&exit)
+  if exit == "EXIT" {
+    break
+    }
+  }
+}
 
 
