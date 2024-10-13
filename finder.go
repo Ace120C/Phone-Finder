@@ -14,23 +14,7 @@ type phonespecs struct {
 
 // Define the brand model type
 type brandModel map[string]phonespecs
-
-
-func getphone_specs(brand, model string, brands map[string]brandModel) string {
-  if models, ok := brands[brand]; ok {
-    
-    if specs, ok := models[model]; ok{
-      return fmt.Sprintf("Brand: %s\nModel: %s\nCPU: %s\nGPU:%s\nRAM: %s", brand, model, specs.CPU, specs.GPU, specs.RAM)
-    } else {
-      return "Phone not found."
-    }
-  }
-  return "Brand not found"
-}
-
-func main() {
-	// Define the map of Samsung models and their specifications
-	var brands map[string]brandModel = map[string]brandModel{
+var brands map[string]brandModel = map[string]brandModel{
 		"SAMSUNG": {
 			  "S": { "ARM Cortex-A8 Hummingbird",  "PowerVR SGX540",  "512MB"},
         "S2": { "Samsung Exynos 4210",  "ARM Mali-400 MP4",  "1GB"},
@@ -103,6 +87,22 @@ func main() {
 		},
 	}
 
+
+func getphone_specs(brand, model string, brands map[string]brandModel) string {
+  if models, ok := brands[brand]; ok {
+    
+    if specs, ok := models[model]; ok{
+      return fmt.Sprintf("Brand: %s\nModel: %s\nCPU: %s\nGPU:%s\nRAM: %s", brand, model, specs.CPU, specs.GPU, specs.RAM)
+    } else {
+      return "Phone not found."
+    }
+  }
+  return "Brand not found"
+}
+
+func main() {
+	// Define the map of Samsung models and their specifications
+	
   var selectedBrand, selectedModel string
     fmt.Print("Enter a brand: ")
   fmt.Scanln(&selectedBrand)
