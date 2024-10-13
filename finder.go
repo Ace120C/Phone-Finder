@@ -89,16 +89,17 @@ var brands map[string]brandModel = map[string]brandModel{
 
 
 func getphone_specs(brand, model string, brands map[string]brandModel) string {
-  if models, ok := brands[brand]; ok {
-    
-    if specs, ok := models[model]; ok{
-      return fmt.Sprintf("Brand: %s\nModel: %s\nCPU: %s\nGPU:%s\nRAM: %s", brand, model, specs.CPU, specs.GPU, specs.RAM)
-    } else {
-      return "Phone not found."
+   models, ok := brands[brand]  
+    if !ok {
+      return "Brand not found"
     }
-  }
-  return "Brand not found"
-}
+    specs, ok := models[model]; 
+    if !ok {
+      return "Phone not found"
+    }
+    return fmt.Sprintf("Brand: %s\nModel: %s\nCPU: %s\nGPU:%s\nRAM: %s", brand, model, specs.CPU, specs.GPU, specs.RAM)
+    }
+   
 
 func main() {
 	// Define the map of Samsung models and their specifications
