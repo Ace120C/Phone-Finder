@@ -113,14 +113,21 @@ func main() {
   selectedModel = strings.ToUpper(selectedModel)
 
   results := getphone_specs(selectedBrand, selectedModel, brands)
-  for {
-  var exit string = "EXIT"
   fmt.Print(results)
-  fmt.Printf("\nType EXIT to exit: ")
-  fmt.Scan(&exit)
-  if exit == "EXIT" {
-    break
-    }
+
+  for {
+  var exit string
+    fmt.Printf("\nType EXIT to exit: ")
+    fmt.Scanln(&exit)
+  if exit == "" {
+    fmt.Println("you didn't type anything, try again")
+
+    }else if exit == "EXIT"{
+     break
+
+    }else {
+      fmt.Println("type exit in uppercase to exit")
+    }   
   }
 }
 
